@@ -1,0 +1,29 @@
+{
+  "name": "webappautomation",
+  "version": "1.0.0",
+  "description": "automation tests for crud operetions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SvetlanaSurzhan/WebAppCypressAutomation.git"
+  },
+  "keywords": [
+    "cypress",
+    "automation",
+    "tests",
+    "ui",
+    "automation"
+  ],
+  "author": "Svetlana Surzhan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SvetlanaSurzhan/WebAppCypressAutomation/issues"
+  },
+  "homepage": "https://github.com/SvetlanaSurzhan/WebAppCypressAutomation#readme",
+  "devDependencies": {
+    "cypress": "^13.15.0"
+  }
+}
