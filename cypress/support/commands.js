@@ -27,9 +27,7 @@
 //login to GitHub:
 Cypress.Commands.add('loginToApplication', () => {
     cy.visit('/login')
-    cy.get('form').then(userInfo => {
-        cy.wrap(userInfo).find('#login_field').clear().type('LanaSTest')
-        cy.wrap(userInfo).find('#password').clear().type('DnxCnr3x-Nxd9Z+')
-        cy.wrap(userInfo).find('[value="Sign in"]').click()
-    })
+    cy.get('form').find('#login_field').clear().type('LanaSTest')
+    cy.get('form').find('#password').clear().type('DnxCnr3x-Nxd9Z+')
+    cy.get('form').find('[value="Sign in"]').click()
 })

@@ -13,10 +13,12 @@ describe('Test with Page Objects', () => {
     })
 
     it.only('Delete existing repo', () => {
-        cy.get('aside').find('[placeholder="Find a repository…"]').type('My-first-repo').then(foundRepo => {
-            cy.wrap(foundRepo).get('ul').find('li').first().click()
-            cy.wrap(foundRepo).url().should('include', '/My-first-repo')
+        cy.get('aside').then(selectRepo => {
+            cy.wrap(selectRepo).find('[placeholder="Find a repository…"]').type('My-first-repo')
+            cy.wrap(selectRepo).find('li').first().click()
         })
+        cy.url().should('include', '/My-first-repo')
+
 
     })
 })
