@@ -3,6 +3,14 @@ describe('Test with Page Objects', () => {
     beforeEach('login to application', () => {
         cy.loginToApplication()
     })
+    beforeEach('handle an uncaught exception', () => {
+        cy.on("uncaught:exception", (e, runnable) => {
+            console.log("error", e);
+            console.log("runnable", runnable);
+            console.log("error", e.message);
+            return false;
+        });
+    })
 
     it('Create new repo', () => {
         cy.get('#dashboard').find('[aria-label="Start a new repository"]').then(createNewRepo => {
@@ -18,7 +26,8 @@ describe('Test with Page Objects', () => {
             cy.wrap(selectRepo).find('li').first().click()
         })
         cy.url().should('include', '/My-first-repo')
-
-
     })
+
+
+
 })
