@@ -13,11 +13,12 @@ describe('Test with Page Objects', () => {
         });
     })
 
-    it('Create new repo', () => {
+    it.only('Create new repo', () => {
         cy.get('#dashboard').find('[aria-label="Start a new repository"]').then(createNewRepo => {
             cy.wrap(createNewRepo).get('form').find('[placeholder="name your new repository..."]').type('My first repo')
             cy.wrap(createNewRepo).get('form').contains('button', 'Create a new repository').click()
         })
+        cy.url().should('include', '/My-first-repo')
     })
 
     it('Delete existing repo', () => {
