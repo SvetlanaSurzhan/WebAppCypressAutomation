@@ -1,4 +1,4 @@
-
+import { onDashboardPage } from "../support/page_objects/dashboardPage"
 
 describe('Test with Page Objects', () => {
     beforeEach('login to application', () => {
@@ -13,12 +13,8 @@ describe('Test with Page Objects', () => {
         });
     })
 
-    it.only('Create new repo', () => {
-        cy.get('#dashboard').find('[aria-label="Start a new repository"]').then(createNewRepo => {
-            cy.wrap(createNewRepo).get('form').find('[placeholder="name your new repository..."]').type('My first repo')
-            cy.wrap(createNewRepo).get('form').contains('button', 'Create a new repository').click()
-        })
-        cy.url().should('include', '/My-first-repo')
+    it.only('verify user can create new repo', () => {
+        onDashboardPage.createNewRepo('MyFirstRepo')
     })
 
     it('Delete existing repo', () => {
@@ -40,13 +36,15 @@ describe('Test with Page Objects', () => {
             cy.wrap(confirmDelition).get('#repo-delete-proceed-button').click()
         })
         cy.url().should('include', 'repositories')
-        //checking deleted repo in the list of existing repos
+        // checking deleted repo in the list of existing repos
         // cy.get('#your-repos-filter').type('My first repo')
         // cy.get('.user-repo-search-results-summary').invoke('attr', 'class').then(classValue => {
         //     expect(classValue).to.equal('0 results for repositories matching My first repo sorted by last updated')
         // })
     })
+    it('filter list of repos', () => {
 
+    })
 
 
 })
