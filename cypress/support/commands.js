@@ -30,4 +30,7 @@ Cypress.Commands.add('loginToApplication', () => {
     cy.get('form').find('#login_field').clear().type('LanaSTest')
     cy.get('form').find('#password').clear().type('DnxCnr3x-Nxd9Z+')
     cy.get('form').find('[value="Sign in"]').click()
+    cy.url().should('eq', 'https://github.com/')
+    //verify user logged in:
+    cy.get('header').find('[class="AppHeader-user"]').click()
 })
