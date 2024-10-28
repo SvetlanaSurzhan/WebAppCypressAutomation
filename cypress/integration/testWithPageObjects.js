@@ -17,11 +17,10 @@ describe('Test with Page Objects', () => {
         cy.get('#dashboard').find('[aria-label="Start a new repository"]').then(createNewRepo => {
             cy.wrap(createNewRepo).get('form').find('[placeholder="name your new repository..."]').type('My first repo')
             cy.wrap(createNewRepo).get('form').contains('button', 'Create a new repository').click()
-
         })
     })
 
-    it.only('Delete existing repo', () => {
+    it('Delete existing repo', () => {
         //find repo
         cy.get('aside, [aria-label="Account"]').then(selectRepo => {
             cy.wrap(selectRepo).find('[placeholder="Find a repository…"]').type('My-first-repo')
@@ -39,11 +38,12 @@ describe('Test with Page Objects', () => {
             cy.wrap(confirmDelition).wait(500)
             cy.wrap(confirmDelition).get('#repo-delete-proceed-button').click()
         })
-
-
-
-
-
+        cy.url().should('include', 'repositories')
+        //checking deleted repo in the list of existing repos
+        // cy.get('#your-repos-filter').type('My first repo')
+        // cy.get('.user-repo-search-results-summary').invoke('attr', 'class').then(classValue => {
+        //     expect(classValue).to.equal('0 results for repositories matching My first repo sorted by last updated')
+        // })
     })
 
 
