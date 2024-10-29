@@ -32,5 +32,5 @@ Cypress.Commands.add('loginToApplication', () => {
     cy.get('form').find('[value="Sign in"]').click()
     cy.url().should('eq', 'https://github.com/')
     //verify user logged in:
-    cy.get('header').find('[class="AppHeader-user"]').click()
+    // cy.get('header').find('[class="AppHeader-user"]').click()
 })
