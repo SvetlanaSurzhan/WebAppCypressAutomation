@@ -1,4 +1,7 @@
 import { onDashboardPage } from "../support/page_objects/dashboardPage"
+import { navigateFromUserMenuTo } from "../support/page_objects/userMenuNavigation"
+import { onRepositoriesPage } from "../support/page_objects/repositoriesPage"
+import { navigateFromMainMenuTo } from "../support/page_objects/mainMenuNavigation"
 
 describe('Test with Page Objects', () => {
     beforeEach('login to application', () => {
@@ -12,17 +15,24 @@ describe('Test with Page Objects', () => {
             return false;
         });
     })
-    const repoName = 'MyFirstRepo'
+    const repoName = 'MyThirdRepo'
     it('verify user can create new repo', () => {
         onDashboardPage.createNewRepo(repoName)
     })
 
-    it('Delete existing repo', () => {
+    it('verify user can delete existing repo', () => {
         onDashboardPage.deleteRepo(repoName)
 
     })
-    it('filter list of repos', () => {
 
+    it('verify user can filter list of repos', () => {
+        navigateFromUserMenuTo.yourRepositories()
+        onRepositoriesPage.filterRepositories(repoName)
+    })
+
+    it.only('verify user can navigate to pages', () => {
+        navigateFromUserMenuTo.yourRepositories()
+        navigateFromMainMenuTo.homePage()
     })
 
 
