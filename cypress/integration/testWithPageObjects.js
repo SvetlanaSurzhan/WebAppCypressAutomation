@@ -15,13 +15,14 @@ describe('Test with Page Objects', () => {
             return false;
         });
     })
-    const repoName = 'MySecondRepo'
+    const repoName = 'MyThirdRepo'
+    const userName = 'LanaSTest'
     it('verify user can create new repo', () => {
         onDashboardPage.createNewRepo(repoName)
     })
 
-    it('verify user can delete existing repo', () => {
-        onDashboardPage.deleteRepo(repoName)
+    it.only('verify user can delete existing repo', () => {
+        onDashboardPage.deleteRepo(repoName, userName)
 
     })
 
@@ -30,9 +31,9 @@ describe('Test with Page Objects', () => {
         navigateFromMainMenuTo.homePage()
     })
 
-    it.only('verify user can filter list of repos', () => {
+    it('verify user can filter list of repos', () => {
         navigateFromUserMenuTo.yourRepositories()
-        onRepositoriesPage.filterRepositories(repoName)
+        onRepositoriesPage.filterRepositories(repoName, userName)
     })
 
 
