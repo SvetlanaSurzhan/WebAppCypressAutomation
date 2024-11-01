@@ -15,7 +15,7 @@ describe('Test with Page Objects', () => {
             return false;
         });
     })
-    const repoName = 'MyThirdRepo'
+    const repoName = 'MySecondRepo'
     it('verify user can create new repo', () => {
         onDashboardPage.createNewRepo(repoName)
     })
@@ -25,15 +25,17 @@ describe('Test with Page Objects', () => {
 
     })
 
-    it('verify user can filter list of repos', () => {
+    it('verify user can navigate to pages', () => {
+        navigateFromUserMenuTo.yourRepositories()
+        navigateFromMainMenuTo.homePage()
+    })
+
+    it.only('verify user can filter list of repos', () => {
         navigateFromUserMenuTo.yourRepositories()
         onRepositoriesPage.filterRepositories(repoName)
     })
 
-    it.only('verify user can navigate to pages', () => {
-        navigateFromUserMenuTo.yourRepositories()
-        navigateFromMainMenuTo.homePage()
-    })
+
 
 
 })
