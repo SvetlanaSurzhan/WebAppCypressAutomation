@@ -12,5 +12,11 @@ export class MainMenuNavigation {
         })
         cy.url().should('include', '/issues')
     }
+    repoPage(repoName) {
+        cy.get('.AppHeader-globalBar-start').find('[aria-label="Open global navigation menu"]').click().then(goToRepo => {
+            cy.wrap(goToRepo).get('ul, [data-target="nav-list.topLevelList"]').contains(`/${repoName}`).click()
+        })
+        cy.url().should('include', `/${repoName}`)
+    }
 }
 export const navigateFromMainMenuTo = new MainMenuNavigation()
