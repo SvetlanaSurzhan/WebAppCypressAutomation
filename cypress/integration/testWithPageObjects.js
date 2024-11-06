@@ -2,6 +2,7 @@ import { onDashboardPage } from "../support/page_objects/dashboardPage"
 import { navigateFromUserMenuTo } from "../support/page_objects/userMenuNavigation"
 import { onRepositoriesPage } from "../support/page_objects/repositoriesPage"
 import { navigateFromMainMenuTo } from "../support/page_objects/mainMenuNavigation"
+import { onRepoPage } from "../support/page_objects/repoPage"
 
 describe('Test with Page Objects', () => {
     beforeEach('login to application', () => {
@@ -15,7 +16,7 @@ describe('Test with Page Objects', () => {
             return false;
         });
     })
-    const repoName = 'MyThirdRepo'
+    const repoName = 'MyfirstRepo'
     const userName = 'LanaSTest'
     it('verify user can create new repo', () => {
         onDashboardPage.createNewRepo(repoName)
@@ -26,7 +27,7 @@ describe('Test with Page Objects', () => {
 
     })
 
-    it.only('verify user can navigate to pages', () => {
+    it('verify user can navigate to pages', () => {
         navigateFromUserMenuTo.yourRepositories()
         navigateFromMainMenuTo.homePage()
         navigateFromMainMenuTo.issuesPage()
@@ -35,6 +36,14 @@ describe('Test with Page Objects', () => {
     it('verify user can filter list of repos', () => {
         navigateFromUserMenuTo.yourRepositories()
         onRepositoriesPage.filterRepositories(repoName, userName)
+    })
+
+    const issueName = 'MyFirstIssue'
+    const issueDescription = 'This is description of my issue'
+
+    it.only('verify user can create new issue for existing repo', () => {
+        navigateFromMainMenuTo.repoPage(repoName)
+        onRepoPage.createIssue(repoName, issueName, issueDescription)
     })
 
 
