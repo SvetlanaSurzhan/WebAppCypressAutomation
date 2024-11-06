@@ -16,16 +16,16 @@ Make sure you have installed Git and Node.js.
 - Clone the repository URL.
 - Create a folder on your computer.
 - Open a terminal and navigate to that folder.
-- Run the command git clone <repository_URL>, replacing <repository_URL> with the repository's URL.
+- Run the command `git clone <repository_URL>`, replacing <repository_URL> with the repository's URL.
 - Press Enter to create a local clone of the repository.
 - Open the created folder in your code editor.
 - Open a new terminal in your code editor.
-- Install project dependencies by running: npm install.
-- Install Cypress by running: npm install cypress --save-dev.
+- Install project dependencies by running: `npm install`.
+- Install Cypress by running: `npm install cypress --save-dev`.
 
 ## How to Run Automated Tests:
 
-- To open Cypress - run command: "npx cypress open"
+- To open Cypress - run command: `npx cypress open`
 - Select "E2E Testing"
 - Select "Chrome" browser
 - Click "Start E2E Testing in Chrome"
