@@ -21,14 +21,15 @@ describe('Test with Page Objects', () => {
         onDashboardPage.createNewRepo(repoName)
     })
 
-    it.only('verify user can delete existing repo', () => {
+    it('verify user can delete existing repo', () => {
         onDashboardPage.deleteRepo(repoName, userName)
 
     })
 
-    it('verify user can navigate to pages', () => {
+    it.only('verify user can navigate to pages', () => {
         navigateFromUserMenuTo.yourRepositories()
         navigateFromMainMenuTo.homePage()
+        navigateFromMainMenuTo.issuesPage()
     })
 
     it('verify user can filter list of repos', () => {
