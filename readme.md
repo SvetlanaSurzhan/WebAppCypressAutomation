@@ -19,11 +19,11 @@ Make sure you have installed **Git and Node.js**.
 
 ## How to Run Automated Tests manualy:
 
-- To open Cypress - run command: "npx cypress open"
-- Select `E2E Testing`
-- Select `Chrome` browser
-- Click `Start E2E Testing in Chrome`
-- Click `testWithPageObjects.js` file
+- To open Cypress: `npx cypress open`
+- Select _E2E Testing_
+- Select _Chrome_ browser
+- Click _Start E2E Testing in Chrome_
+- Click _testWithPageObjects.js_ file
 
 All automated tests will run in sequence.
 
