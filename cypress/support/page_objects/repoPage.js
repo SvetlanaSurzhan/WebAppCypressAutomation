@@ -3,11 +3,19 @@ export class RepoPage {
     updateRepoVisibility(repoName) {
         cy.get('.AppHeader-localBar').contains('Settings').click()
         cy.url().should('include', `/${repoName}/settings`)
+        //checking current visibility:
+        cy.get('[class="Box color-border-danger"]').contains('div', 'This repository is currently').invoke('text').should('contain', 'This repository is currently public.')
+
         cy.get('[class="Box color-border-danger"]').contains('li', 'Change visibility').click()
-        cy.get('.Overlay-backdrop--anchor').find('[data-show-dialog-id="visibility-menu-dialog-public"]').click({ force: true })
-        cy.get('[aria-describedby="visibility-menu-dialog-public-description"]').find('#repo-visibility-proceed-button-public-container').click()
-        cy.get('[aria-describedby="visibility-menu-dialog-public-description"]').contains('button', 'I have read and understand these effects').click()
-        cy.get('[aria-describedby="visibility-menu-dialog-public-description"]').contains('button', 'Make this repository public').click()
+        cy.wait(500)
+        cy.get('.Overlay-backdrop--anchor').contains('button', 'Change to ').click({ force: true })
+        cy.wait(500)
+        cy.get('dialog, #visibility-menu-dialog-private').contains('I want to make this repository ').click()
+        cy.get('dialog, #visibility-menu-dialog-private').contains('button', 'I have read and understand these effects').click()
+        cy.get('dialog, #visibility-menu-dialog-private').contains('button', 'Make this repository ').click()
+
+        //checking visibility after changing it:
+        cy.get('[class="Box color-border-danger"]').contains('div', 'This repository is currently').invoke('text').should('contain', 'This repository is currently private.')
     }
 
     createIssue(repoName, issueName, issueDescription) {
