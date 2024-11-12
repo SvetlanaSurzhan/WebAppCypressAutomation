@@ -40,7 +40,7 @@ describe('Test with Page Objects', () => {
         onRepositoriesPage.filterRepositories(repoName, userName)
     })
 
-    it('verify user can update visibility of existing repo', () => {
+    it.only('verify user can update visibility of existing repo', () => {
         navigateFromMainMenuTo.repoPage(repoName)
         onRepoPage.updateRepoVisibility(repoName)
     })

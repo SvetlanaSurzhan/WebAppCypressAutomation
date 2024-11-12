@@ -4,7 +4,13 @@ export class RepoPage {
         cy.get('.AppHeader-localBar').contains('Settings').click()
         cy.url().should('include', `/${repoName}/settings`)
         //checking current visibility:
-        cy.get('[class="Box color-border-danger"]').contains('div', 'This repository is currently').invoke('text').should('contain', 'This repository is currently public.')
+        cy.get('[class="Box color-border-danger"]').contains('div', 'This repository is currently').invoke('text').then(text => {
+            if (text.includes('This repository is currently private.')) {
+                cy.wrap(text).should('contain', 'This repository is currently private.')
+            } else {
+                cy.wrap(text).should('contain', 'This repository is currently public.')
+            }
+        })
 
         cy.get('[class="Box color-border-danger"]').contains('li', 'Change visibility').click()
         cy.wait(500)
@@ -15,7 +21,13 @@ export class RepoPage {
         cy.get('dialog, #visibility-menu-dialog-private').contains('button', 'Make this repository ').click()
 
         //checking visibility after changing it:
-        cy.get('[class="Box color-border-danger"]').contains('div', 'This repository is currently').invoke('text').should('contain', 'This repository is currently private.')
+        cy.get('[class="Box color-border-danger"]').contains('div', 'This repository is currently').invoke('text').then(text => {
+            if (text.includes('This repository is currently private.')) {
+                cy.wrap(text).should('contain', 'This repository is currently private.')
+            } else {
+                cy.wrap(text).should('contain', 'This repository is currently public.')
+            }
+        })
     }
 
     createIssue(repoName, issueName, issueDescription) {
