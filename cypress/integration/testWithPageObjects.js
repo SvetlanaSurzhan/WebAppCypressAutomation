@@ -17,15 +17,16 @@ describe('Test with Page Objects', () => {
         });
     })
 
+    const newRepoName = 'MyRepository'
     const repoName = 'MyfirstRepo'
     const userName = 'LanaSTest'
 
     it('verify user can create new repo', () => {
-        onDashboardPage.createNewRepo(repoName)
+        onDashboardPage.createNewRepo(newRepoName)
     })
 
     it('verify user can delete existing repo', () => {
-        onDashboardPage.deleteRepo(repoName, userName)
+        onDashboardPage.deleteRepo(newRepoName, userName)
     })
 
     it('verify user can navigate to pages', () => {
@@ -59,8 +60,6 @@ describe('Test with Page Objects', () => {
     it('verify user can update existing issue', () => {
 
     })
-
-
 
 
 })
