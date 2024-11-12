@@ -17,16 +17,11 @@ describe('Test with Page Objects', () => {
         });
     })
 
-    const newRepoName = 'MyRepository'
-    const repoName = 'MyfirstRepo'
+    const repoName = 'MyFirstRepo'
     const userName = 'LanaSTest'
 
     it('verify user can create new repo', () => {
-        onDashboardPage.createNewRepo(newRepoName)
-    })
-
-    it('verify user can delete existing repo', () => {
-        onDashboardPage.deleteRepo(newRepoName, userName)
+        onDashboardPage.createNewRepo(repoName)
     })
 
     it('verify user can navigate to pages', () => {
@@ -40,7 +35,7 @@ describe('Test with Page Objects', () => {
         onRepositoriesPage.filterRepositories(repoName, userName)
     })
 
-    it.only('verify user can update visibility of existing repo', () => {
+    it('verify user can update visibility of existing repo', () => {
         navigateFromMainMenuTo.repoPage(repoName)
         onRepoPage.updateRepoVisibility(repoName)
     })
@@ -61,5 +56,7 @@ describe('Test with Page Objects', () => {
 
     })
 
-
+    it('verify user can delete existing repo', () => {
+        onDashboardPage.deleteRepo(repoName, userName)
+    })
 })
