@@ -32,8 +32,20 @@ export class RepoPage {
         cy.url().should('include', `/${repoName}/issues/`)
     }
 
-    deleteIssue() {
-
+    closeIssue(repoName, issueName) {
+        cy.get('.AppHeader-localBar').contains('Issues').click()
+        cy.url().should('include', `/${repoName}/issues`)
+        //find issue
+        cy.get('div, [aria-label="Issues"]').contains(`${issueName}`).click()
+        cy.url().should('include', `/${repoName}/issues/1`)
+        //close issue
+        cy.get('#show_issue').find('#new_comment_form').contains('Close issue').click()
+        //assertion of current status of the issue
+        cy.wait(2500)
+        cy.get('#partial-discussion-header').then(checkStatus => {
+            cy.wrap(checkStatus).find('bdi', '.js-issue-title markdown-title').should('contain', `${issueName}`)
+            cy.wrap(checkStatus).find('span', '[title="Status:]').should('contain', 'Closed')
+        })
     }
 }
 export const onRepoPage = new RepoPage()

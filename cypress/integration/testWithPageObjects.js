@@ -48,8 +48,9 @@ describe('Test with Page Objects', () => {
         onRepoPage.createIssue(repoName, issueName, issueDescription)
     })
 
-    it('verify user can delete issue', () => {
-
+    it('verify user can close existing issue', () => {
+        navigateFromMainMenuTo.repoPage(repoName)
+        onRepoPage.closeIssue(repoName, issueName)
     })
 
     it('verify user can update existing issue', () => {
