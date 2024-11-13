@@ -40,21 +40,23 @@ describe('Test with Page Objects', () => {
         onRepoPage.updateRepoVisibility(repoName)
     })
 
-    const issueName = 'IssueNumber2'
+    const issueName = 'Issue1'
     const issueDescription = 'This is description of my issue'
+    const updatedIssueName = 'test to update issue name'
 
     it('verify user can create new issue for existing repo', () => {
         navigateFromMainMenuTo.repoPage(repoName)
         onRepoPage.createIssue(repoName, issueName, issueDescription)
     })
 
-    it('verify user can close existing issue', () => {
+    it('verify user can update issue data', () => {
         navigateFromMainMenuTo.repoPage(repoName)
-        onRepoPage.closeIssue(repoName, issueName)
+        onRepoPage.updateIssueName(repoName, issueName, updatedIssueName)
     })
 
-    it('verify user can update existing issue', () => {
-
+    it('verify user can close existing issue', () => {
+        navigateFromMainMenuTo.repoPage(repoName)
+        onRepoPage.closeIssue(repoName, updatedIssueName)
     })
 
     it('verify user can delete existing repo', () => {
