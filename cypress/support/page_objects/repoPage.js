@@ -1,6 +1,7 @@
 export class RepoPage {
 
     updateRepoVisibility(repoName) {
+        //open settings tab
         cy.get('.AppHeader-localBar').contains('Settings').click()
         cy.url().should('include', `/${repoName}/settings`)
         //checking current visibility:
@@ -19,8 +20,10 @@ export class RepoPage {
     }
 
     createIssue(repoName, issueName, issueDescription) {
+        //open issues tab
         cy.get('.AppHeader-localBar').contains('Issues').click()
         cy.url().should('include', `/${repoName}/issues`)
+        //create new issue
         cy.get('main, #js-repo-pjax-container').contains('New issue').click()
         cy.url().should('include', `/${repoName}/issues/new`)
         cy.get('.js-slash-command-surface').then(newIssueData => {
@@ -33,6 +36,7 @@ export class RepoPage {
     }
 
     updateIssueName(repoName, issueName, updatedIssueName) {
+        //open issues tab
         cy.get('.AppHeader-localBar').contains('Issues').click()
         cy.url().should('include', `/${repoName}/issues`)
         //find issue
@@ -49,6 +53,7 @@ export class RepoPage {
     }
 
     closeIssue(repoName, updatedIssueName) {
+        //open issues tab
         cy.get('.AppHeader-localBar').contains('Issues').click()
         cy.url().should('include', `/${repoName}/issues`)
         //find issue
@@ -60,8 +65,21 @@ export class RepoPage {
         cy.wait(2500)
         cy.get('#partial-discussion-header').then(checkStatus => {
             cy.wrap(checkStatus).find('bdi', '.js-issue-title markdown-title').should('contain', `${updatedIssueName}`)
-            cy.wrap(checkStatus).find('span', '[title="Status:]').should('contain', 'Closed')
+            cy.wrap(checkStatus).get('span, [title="Status:]').should('contain', 'Closed')
         })
+    }
+
+    filterIssues(repoName, updatedIssueName) {
+        //open issues tab
+        cy.get('.AppHeader-localBar').contains('Issues').click()
+        cy.url().should('include', `/${repoName}/issues`)
+        cy.wait(500)
+        //filter list of existing issues
+        cy.get('[class="d-flex flex-justify-between mb-md-3 flex-column-reverse flex-md-row flex-items-end"]').find('[placeholder="Search all issues"]').type(`${updatedIssueName}`)
+        cy.wait(500)
+        //assertion
+        // cy.url().should('include', `+${updatedIssueName}`)
+        // cy.get('.Box mt-3 Box--responsive hx_Box--firstRowRounded0, [aria-label="Issues"]').should('contain', `${updatedIssueName}`)
     }
 }
 export const onRepoPage = new RepoPage()

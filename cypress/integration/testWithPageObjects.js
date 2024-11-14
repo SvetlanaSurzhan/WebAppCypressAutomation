@@ -54,6 +54,11 @@ describe('Test with Page Objects', () => {
         onRepoPage.updateIssueName(repoName, issueName, updatedIssueName)
     })
 
+    it('verify user can filter list of issues', () => {
+        navigateFromMainMenuTo.repoPage(repoName)
+        onRepoPage.filterIssues(repoName, updatedIssueName)
+    })
+
     it('verify user can close existing issue', () => {
         navigateFromMainMenuTo.repoPage(repoName)
         onRepoPage.closeIssue(repoName, updatedIssueName)
