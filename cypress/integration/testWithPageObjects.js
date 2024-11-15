@@ -42,7 +42,7 @@ describe('Test with Page Objects', () => {
 
     const issueName = 'Issue1'
     const issueDescription = 'This is description of my issue'
-    const updatedIssueName = 'test to update issue name'
+    const updatedIssueName = 'Updated Issue Name'
 
     it('verify user can create new issue for existing repo', () => {
         navigateFromMainMenuTo.repoPage(repoName)

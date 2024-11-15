@@ -75,11 +75,11 @@ export class RepoPage {
         cy.url().should('include', `/${repoName}/issues`)
         cy.wait(500)
         //filter list of existing issues
-        cy.get('[class="d-flex flex-justify-between mb-md-3 flex-column-reverse flex-md-row flex-items-end"]').find('[placeholder="Search all issues"]').type(`${updatedIssueName}`)
-        cy.wait(500)
+        cy.get('[class="d-flex flex-justify-between mb-md-3 flex-column-reverse flex-md-row flex-items-end"]').find('[placeholder="Search all issues"]').type('{enter}' + updatedIssueName)
         //assertion
-        // cy.url().should('include', `+${updatedIssueName}`)
-        // cy.get('.Box mt-3 Box--responsive hx_Box--firstRowRounded0, [aria-label="Issues"]').should('contain', `${updatedIssueName}`)
+        cy.wait(1000)
+        cy.get('[class="Box mt-3 Box--responsive hx_Box--firstRowRounded0"]').find('[class="flex-auto d-none d-lg-block no-wrap"]').should('contain', '1 Open')
+        cy.get('[class="Box mt-3 Box--responsive hx_Box--firstRowRounded0"]').find('[aria-label="Issues"]').should('contain', `${updatedIssueName}`)
     }
 }
 export const onRepoPage = new RepoPage()
