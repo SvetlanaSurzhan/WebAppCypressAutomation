@@ -2,7 +2,7 @@
 
 ## What is it:
 
-This repository contains a suite of automated tests for the GitHub.com platform, designed to validate core functionalities and ensure a reliable user experience.
+This repository contains a suite of automated E2E tests for the GitHub.com web-based platform, designed to validate core functionalities and ensure a reliable user experience.
 
 ## Technical Summary:
 
