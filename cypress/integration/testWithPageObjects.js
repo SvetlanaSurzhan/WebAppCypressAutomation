@@ -8,6 +8,7 @@ describe('Test with Page Objects', () => {
     beforeEach('login to application', () => {
         cy.loginToApplication()
     })
+
     beforeEach('handle an uncaught exception', () => {
         cy.on("uncaught:exception", (e, runnable) => {
             console.log("error", e);
@@ -26,6 +27,7 @@ describe('Test with Page Objects', () => {
 
     it('verify user can navigate to pages', () => {
         navigateFromUserMenuTo.yourRepositories()
+        navigateFromUserMenuTo.yourProfile(userName)
         navigateFromMainMenuTo.homePage()
         navigateFromMainMenuTo.issuesPage()
     })
