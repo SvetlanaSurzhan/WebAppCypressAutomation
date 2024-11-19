@@ -20,7 +20,7 @@ export class DashboardPage {
         //delete repo
         cy.get('[class="Box color-border-danger"]').find('#dialog-show-repo-delete-menu-dialog').click()
         cy.get('#repo-delete-menu-dialog').contains('span', 'I want to delete this repository').click({ force: true }).then(confirmDelition => {
-            cy.wrap(confirmDelition).get('#repo-delete-menu-dialog').contains('span', 'I have read and understand these effects').click({ force: true })
+            cy.wrap(confirmDelition).get('#repo-delete-menu-dialog').contains('I have read and understand these effects').click({ force: true })
             cy.wrap(confirmDelition).get('#verification_field').type(`${userName}/${repoName}`, { force: true })
             cy.wrap(confirmDelition).wait(500)
             cy.wrap(confirmDelition).get('#repo-delete-proceed-button').click({ force: true })
