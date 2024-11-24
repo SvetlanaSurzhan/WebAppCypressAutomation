@@ -30,7 +30,7 @@ Cypress.Commands.add('loginToApplication', () => {
     cy.get('form').find('#login_field').clear().type('LanaSTest')
     cy.get('form').find('#password').clear().type('DnxCnr3x-Nxd9Z+')
     cy.get('form').find('[value="Sign in"]').click()
-    //verify user logged in:
-    cy.get('header').find('[class="AppHeader-user"]').click()
-    cy.get('[aria-label="User navigation"]').find('[class="lh-condensed overflow-hidden d-flex flex-column flex-justify-center ml-2 f5 mr-auto"]').should('contain', 'LanaSTest')
+    //verify user logged in and Home/Dashboard page is displayed:
+    cy.url().should('eq', 'https://github.com/')
+    cy.get('.AppHeader-globalBar-start').should('contain', 'Dashboard')
 })
