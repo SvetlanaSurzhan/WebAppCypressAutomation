@@ -5,7 +5,8 @@ export class RepoPage {
         cy.get('.AppHeader-localBar').contains('Settings').click()
         cy.url().should('include', `/${repoName}/settings`)
         //checking current visibility:
-        cy.get('[class="Box color-border-danger"]').contains('div', 'This repository is currently').invoke('text').should('contain', 'This repository is currently private.')
+        cy.get('[class="Box color-border-danger"]').contains('div', 'This repository is currently')
+            .invoke('text').should('contain', 'This repository is currently private.')
 
         cy.get('[class="Box color-border-danger"]').contains('li', 'Change visibility').click()
         cy.wait(500)
@@ -46,9 +47,10 @@ export class RepoPage {
         cy.get('#partial-discussion-header, .gh-header-show').contains('span', 'Edit').click()
         cy.wait(1000)
         //update issue name
-        cy.get('#partial-discussion-header, .gh-header-edit mb-2 position-relative').find('[aria-label="Issue title"]').clear().type(`${updatedIssueName}`, { force: true })
+        cy.get('#partial-discussion-header, .gh-header-edit mb-2 position-relative').find('[aria-label="Issue title"]')
+            .clear().type(`${updatedIssueName}`, { force: true })
         cy.get('#partial-discussion-header, .gh-header-edit mb-2 position-relative').contains('Save').click()
-        //assertion 
+        //assertion for updated issue name
         cy.get('#partial-discussion-header').find('bdi', '.js-issue-title markdown-title').should('contain', `${updatedIssueName}`)
     }
 
