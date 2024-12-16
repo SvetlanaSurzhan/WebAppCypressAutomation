@@ -1,22 +1,28 @@
+
+function openMainMenu(itemInMainMenu) {
+    let repoName =
+        cy.get('.AppHeader-globalBar-start').find('[aria-label="Open global navigation menu"]').click()
+    if (itemInMainMenu === 'Home') {
+        cy.get('[data-target="deferred-side-panel.panel"]').find('[data-target="nav-list.topLevelList"]').contains('li', 'Home').click()
+    } else if (itemInMainMenu === 'Issues') {
+        cy.get('[data-target="deferred-side-panel.panel"]').find('[data-target="nav-list.topLevelList"]').contains('li', 'Issues').click()
+    } else if (itemInMainMenu === 'MyFirstRepo') {
+        cy.get('[data-target="deferred-side-panel.panel"]').find('[data-target="nav-list.topLevelList"]').contains('/MyFirstRepo').click()
+    }
+}
+
 export class MainMenuNavigation {
     homePage() {
-        cy.get('.AppHeader-globalBar-start').find('[aria-label="Open global navigation menu"]').click().then(goToHomePage => {
-            cy.wrap(goToHomePage).get('ul, [data-target="nav-list.topLevelList"]').contains('li', 'Home').click()
-        })
-
+        openMainMenu('Home')
         cy.url().should('include', '/dashboard')
     }
     issuesPage() {
-        cy.get('.AppHeader-globalBar-start').find('[aria-label="Open global navigation menu"]').click().then(goToIssues => {
-            cy.wrap(goToIssues).get('ul, [data-target="nav-list.topLevelList"]').contains('li', 'Issues').click()
-        })
+        openMainMenu('Issues')
         cy.url().should('include', '/issues')
     }
     repoPage(repoName) {
-        cy.get('.AppHeader-globalBar-start').find('[aria-label="Open global navigation menu"]').click().then(goToRepo => {
-            cy.wrap(goToRepo).get('ul, [data-target="nav-list.topLevelList"]').contains(`/${repoName}`).click()
-        })
-        cy.url().should('include', `/${repoName}`)
+        openMainMenu('MyFirstRepo')
+        cy.url().should('include', '/MyFirstRepo')
     }
 }
 export const navigateFromMainMenuTo = new MainMenuNavigation()
