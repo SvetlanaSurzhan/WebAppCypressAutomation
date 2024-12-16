@@ -30,6 +30,7 @@ describe('Test with Page Objects', () => {
         navigateFromUserMenuTo.yourProfile(userName)
         navigateFromMainMenuTo.homePage()
         navigateFromMainMenuTo.issuesPage()
+        navigateFromMainMenuTo.repoPage(repoName)
     })
 
     it('verify user can filter list of repos', () => {
