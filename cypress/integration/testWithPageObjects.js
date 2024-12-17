@@ -26,8 +26,8 @@ describe('Test with Page Objects', () => {
     })
 
     it('verify user can navigate to pages', () => {
+        navigateFromUserMenuTo.yourProfile()
         navigateFromUserMenuTo.yourRepositories()
-        navigateFromUserMenuTo.yourProfile(userName)
         navigateFromMainMenuTo.homePage()
         navigateFromMainMenuTo.issuesPage()
         navigateFromMainMenuTo.repoPage(repoName)
