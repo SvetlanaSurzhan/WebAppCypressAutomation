@@ -34,3 +34,7 @@ Cypress.Commands.add('loginToApplication', () => {
     cy.url().should('eq', 'https://github.com/')
     cy.get('.AppHeader-globalBar-start').should('contain', 'Dashboard')
 })
+//find items from user menu:
+Cypress.Commands.add('getUserMenuListItem', () => {
+    return cy.get('[class="Box-sc-g0xbh4-0 hdShgm DialogOverflowWrapper"]').find('ul')
+})

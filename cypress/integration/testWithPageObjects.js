@@ -25,12 +25,14 @@ describe('Test with Page Objects', () => {
         onDashboardPage.createNewRepo(repoName)
     })
 
-    it('verify user can navigate to pages', () => {
+    it.only('verify user can navigate to pages', () => {
         navigateFromUserMenuTo.yourProfile()
         navigateFromUserMenuTo.yourRepositories()
+        // navigateFromUserMenuTo.yourCopilot()
         navigateFromMainMenuTo.homePage()
         navigateFromMainMenuTo.issuesPage()
         navigateFromMainMenuTo.repoPage(repoName)
+
     })
 
     it('verify user can filter list of repos', () => {
